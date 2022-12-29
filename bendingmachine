@@ -1,0 +1,58 @@
+package baekjoon;
+
+import java.util.Scanner;
+
+public class Exe_while_p01 {
+
+	public static void main(String[] args) {
+
+		/*
+		 * # while 문 연습 커피자판기 커피 몇잔먹을지 입력받고 총 얼마인지 띄우기 커피를 계속 팔다가 커피가 다 떨어지면 '판매중지' 문구
+		 * 띄우기 판매시 남은 커피양과 가격 알려주기
+		 * 
+		 */
+
+		int coffee = 50;
+		int price = 1000;
+		int wage = 0;
+
+		int cup = 0;
+
+		Scanner scan = new Scanner(System.in);
+
+		while (coffee > 0) {
+			System.out.println("어서오세요 뽀다방입니다 ~");
+			System.out.printf("몇 잔 드릴까요 ? %d잔까지 주문가능합니다.\n주문 : ", coffee);
+			int order = scan.nextInt();
+			System.out.printf("%d잔 부탁해요 ~\n", order);
+
+			if (order >= 1 && order <= 50) {
+				while (order > coffee) {
+					System.out.printf("재고는 %d입니다. %d잔 이하로 주문해주세요\n", coffee, coffee);
+					System.out.printf("몇 잔 드릴까요 ? %d잔까지 주문가능합니다.\n주문 : ", coffee);
+					order = scan.nextInt();
+					System.out.printf("%d잔 부탁해요 ~\n", order);
+				}
+				
+				cup = cup + order;
+				wage = price * cup;
+				coffee = coffee - order;
+
+				System.out.printf("매출 : %d원  재고 : %d잔\n", wage, coffee);
+
+			} else if (order > 50) {
+				System.out.println("50잔 이하로 주문해주세요.");
+			} else {
+				System.out.println("1잔이상 주문가능합니다.");
+			}
+
+		}
+
+		if (coffee == 0) {
+			System.out.println("판매 중지\n내일 또 오세요 ^~^");
+
+			// break; 강제로 while문 
+		}
+	}
+
+}
