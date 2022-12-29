@@ -1,0 +1,57 @@
+package baekjoon;
+
+import java.util.Scanner;
+
+public class Lv01_ex02_2884_alarm {
+
+	public static void main(String[] args) {
+
+//		* 조건문 문제
+		
+//		45분 일찍 알람 설정하기
+//		원래 설정되어 있는 알람을 45분 앞서는 시간으로 바꾸는 것이다.
+//		현재 상근이가 설정한 알람 시각이 주어졌을 때, 
+//		이를 언제로 고쳐야 하는지 구하는 프로그램을 작성하시오.
+		
+//		(0 ≤ H ≤ 23, 0 ≤ M ≤ 59)  H : 시 / M : 분
+	
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("알람시계 45분 일찍 설정하기 시간구하기");
+		
+		
+		System.out.println("시 입력 : ");
+		int h = scan.nextInt();
+			if(h >= 0 && h <= 23) {
+				System.out.printf("%d시\n", h);
+				System.out.println("분 입력 : ");
+				int m = scan.nextInt();
+					if(m >= 0 && m <= 59) {
+						System.out.printf("%d분\n", h);
+						
+						System.out.print("원래 일어나야하는 시간");
+						System.out.printf("%d시 %d분\n", h, m);
+						
+						System.out.println("알람설정시간");
+						
+						if (m < 45) {
+							System.out.printf("%d시 %d분", h-1, ((60+m)-45));
+						}
+						else {
+							System.out.printf("%d시 %d분", h, m-45);
+						}
+								
+						
+					}
+					else {
+						System.out.println("유효범위 : 0 ≤ M ≤ 59 ");
+					}	
+			}
+			else {
+				System.out.println("유효범위 : 0 ≤ H ≤ 23");
+			}
+		
+	}
+
+}
